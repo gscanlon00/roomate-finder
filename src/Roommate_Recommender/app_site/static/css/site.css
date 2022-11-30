@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+}
+
+.title{
+  text-align: center;
+  font-size: 25px;
+}
+
+.error {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content{
+  padding: 20px;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  height: 90vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  border: 2px solid #d18580;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  margin: 20px 0 50px 0;
+  border-radius: 100vw;
+  background: #d18580;
+  text-transform: uppercase;
+  color: #171616;
+  opacity: 0.6;
+  transition: opacity 250ms ease;
+}
+.btn:hover {
+  opacity: 1;
+}
+
+.signup{
+  margin-top: 100px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-content {
+  background: #e8d0cf;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.home-content {
+  margin:0 auto;
+  padding:0;
+  width:1000px;
+  overflow: auto;
+}
+
+.home-properties,
+.home-properties-right,
+.home-properties-left {
+  position: relative;
+  width: 500px;
+  float: left;
+  height: 250px;
+  border-radius: 15px;
+  background-image: url("/static/css//images/home.jpg");
+  background-size: 80%;
+  background-position: 265% center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  box-shadow: rgb(217 217 217) -2px 4px 6px 0px;
+  margin-left: 100px;
+  margin-top: 75px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-properties::before,
+.home-properties-right::before,
+.home-properties-left::before { /* add curve to image */
+  content: "";
+  position: absolute;
+  height: 250%;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-90%, -50%);
+  background: #FFFFFF;
+  border-radius: 50%;
+  border-right: 2px solid #f5f5f5;
+}
+
+.home-properties-right {
+  float:right;
+  margin-right: 100px;
+  background-image: url("/static/css//images/mates.jpg");
+}
+
+.home-paragraph {
+  position: relative;
+  width: 275px;
+  color: rgb(128, 128, 128);
+  padding-left: 35px;
+  padding-bottom: 15px;
+  max-width: 200px;
+}
+
+.home-heading {
+  position: relative;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 110%;
+  padding: 25px 25px 20px;
+  max-width: 200px;
+}
+
+.home-button {
+  border-radius: 12px;
+  position: relative;
+  height: 30px;
+  width: 130px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 25px;
+  margin-bottom: 15px;
+  background-color: #e8d0cf;
+  transition-duration: 0.4s;
+  text-align: center;
+  padding: 5px 5px;
+  font-weight: 600;
+  color: #565f63;
+}
+
+.home-button:hover {
+  background-color: #e6f2ff;
+}
+
+.profile-img {
+  width: 270px;
+  height: 270px;
+  margin-left: 15%;
+  margin-top: 25px;
+  border-radius: 20%;
+}
+
+.profile-heading {
+  position: relative;
+  display: inline;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 150%;
+  max-width: 200px;
+}
+
+.profile_attrib {
+  display: inline;
+  border-radius: 8px;
+  height: 30px;
+  width: 130px;
+  margin-left: 5px;
+  margin-top: 25px;
+  background-color: #e8d0cf;
+  text-align: center;
+  padding: 5px 5px;
+  font-weight: 600;
+  color: #565f63;
+}

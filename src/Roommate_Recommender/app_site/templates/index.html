@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <div class="home-content"></div>
+    <div class="home-properties">
+        <div class="home-heading">Find a Roommate</div>
+        <div class="home-paragraph"><p>Find the perfect roommate for your property</p></div>
+        {% if user.is_authenticated %}
+        <a class="home-button" href="{% url 'add_property' %}" role="button">Add property</a>
+        {% else %}
+        <a class="home-button" href="{% url 'signup' %}" role="button">Get Started</a>
+        {% endif %}
+    </div>
+    <div class="home-properties-right">
+        <div class="home-heading">Find a House</div>
+        <div class="home-paragraph"><p>Find a property with the perfect roommate for you</p></div>
+        {% if user.is_authenticated %}
+        <a class="home-button" href="{% url 'recommended_property' %}" role="button">Find property</a>
+        {% else %}
+        <a class="home-button" href="{% url 'signup' %}" role="button">Get Started</a>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

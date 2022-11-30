@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+  <div class="row">
+    {% for p in properties %}
+
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+                <a class="card-img-tiles" href="/property/{{ p.id }}">
+                    <img style="border:5px solid #e6f2ff;" class="img-fluid"  src="{{ p.picture.url }}" width="357" height="300">
+
+                <div class="panel-footer">
+                    <h4>{{ p.property_name }}</h4><small class="text-muted">Starting from <strong>{{ p.price }}</strong></small>
+                </div>
+                </a>
+            </div>
+        </div>
+
+
+    {% endfor %}
+    </div>
+{% endblock %}

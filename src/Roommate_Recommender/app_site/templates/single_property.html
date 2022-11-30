@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ property.property_name }}
+{% endblock %}
+
+{% block content %}
+<head>
+        {% load static %}
+              <link rel="stylesheet" href="{% static 'css\single_prop.css'%}"/>
+    <title>Property</title>
+</head>
+
+<div class="col-md-4">
+    {% if request.user == property.user %}
+        {% url 'edit_property_pic' property.pk as p_url %}
+    <div style="margin-bottom: 15px;">
+        <a class="home-button" role="button" href="{{ p_url }}">Change picture</a>
+    </div>
+    {% else %}
+    {% endif %}
+    <div class="primary-image">
+    <img class="primary-image" src="{{ property.picture.url }}" >
+    </div>
+    <p style="margin-top: 25px;"><a href="{% url 'all_properties' %}">Return to all properties</a></p>
+</div>
+{% if request.user == property.user %}
+<div class="edit">
+    {% url 'edit_property' property.pk as p_url %}
+    <a class="home-button" role="button" href="{{ p_url }}">Edit property</a>
+</div>
+{% else %}
+{% endif %}
+
+<div class="col-md-4">
+
+    <h2 class="profile-heading">{{ property.property_name }}</h2>
+    <hr>
+    <p><strong>Price:</strong> {{ property.price }}</p>
+    <p><strong>Address:</strong> {{ property.address }}</p>
+    <hr>
+    <p>{{ property.description }}</p>
+    <hr>
+    {% if property.wc_access %}
+        <div class="profile_attrib ">Wheelchair Access </div>
+    {% endif %}
+    {% if property.allows_smoking %}
+    <div class="profile_attrib ">Allows smoking </div>
+    {% endif %}
+    {% if property.allows_pets %}
+    <div class="prop_attrib ">Allows pets </div>
+    {% endif %}
+    <br><br><br>
+    {% if offers %}
+    <div class="prop_attrib "><strong>Offer sent!</strong></div>
+    {% else %}
+    <a class="home-button" role="button" href="/dislike/{{ property.id }}">Dislike</a>
+    <a class="home-button" role="button" href="/like/{{ property.id }}">Like</a>
+    {% endif %}
+</div>
+{% endblock %}
+

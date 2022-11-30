@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<body>
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+    <section class="login">
+      <div class="content">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="title">
+            <p>Login</p>
+          </div>
+
+          <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+          </table>
+
+          <input type="submit" value="Login">
+          <input type="hidden" name="next" value="{{ next }}">
+        </form>
+        <div class="signup-l">
+          <small class="mute"
+            >Don't have an account?
+            <a class="sign" href="{% url 'signup' %}">Sign Up</a></small>
+        </div>
+        <div class="forgot">
+          <small class="mute"
+            >Forgot Password?
+            <a class="FP" href="{% url 'password_reset' %}"
+              >Reset Password</a
+            ></small
+          >
+        </div>
+      </div>
+    </section>
+  </body>
+
+
+
+{% endblock %}

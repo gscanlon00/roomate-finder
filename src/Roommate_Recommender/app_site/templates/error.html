@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+
+{% block content %}
+<div class="error">
+    <div class="error-content">
+        <h3>Sorry we could not locate the item you were trying to view.</h3>
+        <br>
+        <h4><a href="{% url 'index' %}">Return home</a></h4>
+    </div>
+</div>
+{% endblock %}

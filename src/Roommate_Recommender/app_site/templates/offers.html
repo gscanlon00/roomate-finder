@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Offers{% endblock %}
+
+{% block content %}
+
+<div class="col-md-1"></div>
+<div class="col-md-4">
+    <div class="sign-content">
+    <h3 class="profile-heading">Received Offers:</h3>
+    <hr>
+    {% if accepted_offers %}
+        <h4><strong>Accepted offers:</strong></h4>
+    {% endif %}
+    {% for o in accepted_offers %}
+        {% url 'profile' o.sender_name as profile_url %}
+        {% url 'single_property' o.p_id as property_url %}
+        <p>Offer from {{ o.sender_name }} for <a href="{{ property_url }}">{{ o.property_name }}</a></p>
+        <p> View their profile <a href="{{ profile_url }}">here</a></p>
+        {% if o.accepted %}
+        <p>Get in contact with {{ o.sender_name }} now!</p>
+        <p> Their phone number is: <strong>{{ o.sender_num }}</strong></p>
+        {% else %}
+        <p> <a href="{% url 'accept_offer' o.id %}">Accept this offer now!</a></p>
+        {% endif %}
+        <hr>
+    {% empty %}
+    {% endfor %}
+    <h4><strong>Unanswered offers:</strong></h4>
+    {% for o in new_offers %}
+        {% url 'profile' o.sender_name as profile_url %}
+        {% url 'single_property' o.p_id as property_url %}
+        <p>Offer from {{ o.sender_name }} for <a href="{{ property_url }}">{{ o.property_name }}</a></p>
+        <p> View their profile <a href="{{ profile_url }}">here</a></p>
+        {% if o.accepted %}
+        <p> <strong>You have accepted this offer!</strong></p>
+        <p>Get in contact with {{ o.sender_name }}. Their phone number is: {{ o.sender_num }}</p>
+        {% else %}
+        <p> <a href="{% url 'accept_offer' o.id %}">Accept this offer now!</a></p>
+        {% endif %}
+        <hr>
+    {% empty %}
+            <p> No new offers to display!</p>
+    {% endfor %}
+    </div>
+</div>
+
+<div class="col-md-2"></div>
+<div class="col-md-4">
+
+    <div class="sign-content">
+    <h3 class="profile-heading" >Sent Offers:</h3>
+    <hr>
+    {% if sent_offers %}
+    {% for o in sent_offers %}
+        {% url 'profile' o.receiver_name as profile_url %}
+        {% url 'single_property' o.p_id as property_url %}
+        <p>Offer to: <strong>{{ o.receiver_name }}</strong> for <a href="{{ property_url }}">{{ o.property_name }}</a></p>
+        <p> View their profile <a href="{{ profile_url }}">here</a></p>
+        {% if o.accepted %}
+        <p> <strong>Offer Accepted!</strong></p>
+        <p>Get in contact with {{ o.receiver_name }}. Their phone number is: {{ o.receiver_num }}</p>
+        {% endif %}
+        <hr>
+    {% endfor %}
+    {% else %}
+            <p> No offers to display!</p>
+        <hr>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}

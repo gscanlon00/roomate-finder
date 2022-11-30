@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<body>
+<section class="signup">
+      <div class="sign-content">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+          <fieldset class="form">
+            <legend class="border-bottom">Submit changes!</legend>
+            {{form.as_p}}
+          </fieldset>
+             <div class="form">
+            <button class="btn" type="submit">Submit</button>
+            </div>
+        </form>
+      </div>
+      {{form.errors}}
+    </section>
+  </body>
+</html>
+{% endblock %}

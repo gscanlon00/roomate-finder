@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ profile.username }}
+{% endblock %}
+
+{% block content %}
+<div class="col-md-4">
+    {% if request.user == profile %}
+        {% url 'edit_user_pic' as p_url %}
+    <div style="margin-bottom: 15px;">
+        <a class="home-button" role="button" href="{{ p_url }}">Change picture</a>
+    </div>
+    {% else %}
+    {% endif %}
+    <img class="profile-img" src="{{ profile.picture.url }}">
+</div>
+<div style="margin-top: 25px" class="col-md-4">
+    <h2 class="profile-heading">   {{ profile.first_name }} {{ profile.last_name }}</h2>
+    <hr>
+    <p><strong>Budget:</strong> {{ profile.budget }}</p>
+    <p><strong>Age:</strong>  {{ profile.age }}</p>
+    {% if profile.re_gender == "4" %}
+    <p><strong>Preferred gender:</strong> No preference</p>
+    {% elif profile.re_gender == "2" %}
+    <p><strong>Preferred gender:</strong> Female</p>
+    {% else %}
+    <p><strong>Preferred gender:</strong> Male</p>
+    {% endif %}
+    <p><strong>Cleanliness:</strong> {{ profile.cleanliness }}</p>
+    <p><strong>Loudness:</strong> {{ profile.noise_level }}</p>
+    <hr>
+    {% if profile.wc_access %}
+    <div class="profile_attrib ">Requires W/C access</div>
+
+    {% endif %}
+    {% if profile.smoking %}
+        <div class="profile_attrib ">Smokes</div>
+    {% endif %}
+    {% if profile.has_pet %}
+        <div class="profile_attrib ">Has Pet</div>
+    {% endif %}
+</div>
+{% if request.user == profile %}
+<div class="col-md-4">
+    <a class="home-button" role="button" href="{% url 'edit_user' %}">Edit Profile</a>
+</div>
+{% endif %}
+
+{% endblock %}

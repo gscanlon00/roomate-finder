@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rommate Recommender</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\addHouse.css'%}"/>
+</head>
+<body>
+
+{% block content %}
+
+<section class="signup">
+      <div class="sign-content">
+        <form action="/add_property/" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <fieldset class="form">
+            <legend class="border-bottom">Submit your Property!</legend>
+            {{form.as_p}}
+            </fieldset>
+            <div class="form">
+            <input class="btn" id="add-btn" type="submit" value="Submit">
+            </div>
+        </form>
+        <div class="top">
+          <small class="mute"><a class="ml-2" href="{% url 'index' %}">Return home</a></small>
+        </div>
+      </div>
+</section>
+{% endblock %}
+</body>
+</html>

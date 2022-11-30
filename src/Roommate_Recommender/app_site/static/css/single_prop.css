@@ -1,0 +1,43 @@
+.primary-image {
+  border: 2px solid #e0eded;
+  width: 350px;
+  height: 350px;
+  border-radius: 8%;
+}
+
+.price{
+    font-size: 22px;
+  color: #9cd70e;
+  font-weight: 600;
+}
+
+.address{
+    font-size: 22px;
+  color: #171616;
+  font-weight: 600;
+}
+
+.description{
+    font-size: 22px;
+  color: #171616;
+  font-weight: 600;
+}
+
+.edit {
+    float: right;
+    margin-right: 23%;
+}
+
+.prop_attrib {
+  display: inline;
+  border-radius: 8px;
+  height: 30px;
+  width: 130px;
+  margin-left: 5px;
+  margin-top: 25px;
+  background-color: #e8d0cf;
+  text-align: center;
+  padding: 5px 5px;
+  font-weight: 600;
+  color: #565f63;
+}

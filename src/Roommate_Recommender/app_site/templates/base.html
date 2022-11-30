@@ -1,0 +1,59 @@
+{% load static %}
+<html lang="en">
+    <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+          <link rel="stylesheet" href="{% static 'css\site.css'%}"/>
+          <title>{% block title %}Roommate Finder{% endblock %}</title>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default">  <!-- Template from Bootstrap3 documentation used for navbar -->
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Roommate Finder</a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                      <li><a href="/">Home</a></li>
+                      <li><a href="{% url 'all_properties' %}">Properties</a></li>
+                      <li><a href="{% url 'recommended_property' %}">Find your perfect roommate!</a></li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="/profile/{{ user.username }}">Profile</a></li>
+                          <li><a href="{% url 'add_property' %}">Add a Property</a></li>
+                          <li><a href="{% url 'my_properties' %}">My Properties</a></li>
+                          <li><a href="{% url 'offers' %}">Offers</a></li>
+                          <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                    {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="{% url 'login' %}">Login</a></li>
+                      <li><a href="{% url 'signup' %}">Register</a></li>
+                    </ul>
+                    {% endif %}
+                  </div>
+                </div><!--/.container-fluid -->
+            </nav> <!--/.nav-collapse -->
+        </div> <!--/.container -->
+
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
