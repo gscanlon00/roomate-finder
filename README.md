@@ -1,2 +1,2 @@
 # roomate-finder
-A website for people to find a Roommate. Created with a partner for 3rd Year University project with Django.
+A website to help people to find a Roommate or advertise property. Created for a 3rd Year University project using Django.
